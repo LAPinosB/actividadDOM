@@ -29,6 +29,7 @@ public class AccesoDOM {
         //LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
         InsertBookDom insertBookDom = new InsertBookDom();
         AbrirDoc abrirDoc = new AbrirDoc();
+        DeleteNode deleteNode = new DeleteNode();
         File file = new File("Libros.xml"); //El archivo este a nivel del proyecto 
         if(abrirXMLconDOM.abrirXMLconDOM(file)==0){
             //Lectura de un archivo xml con DOM
@@ -39,7 +40,8 @@ public class AccesoDOM {
             //Lo hemos creado para llamarlo desde parametro en insertarLibroEnDOM(...)
             doc = abrirDoc.abrirDoc(file);
             //leerAccesoDom.mostrarNodos(abrirXMLconDOM.doc, "********");
-            insertBookDom.insertarLibroEnDOM("Cien Años de Soledad", "Gabriel Garcia Marquez", "1980", file, doc);  
+            insertBookDom.insertarLibroEnDOM("Cien Años de Soledad", "Gabriel Garcia Marquez", "1980", file, doc);
+            deleteNode.deleteNode("El Libro de la Jungla", doc);
         }else{
             System.out.println("El archivo DOM no se abrio correctamente");
         }
