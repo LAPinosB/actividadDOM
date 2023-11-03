@@ -38,7 +38,7 @@ public class AccesoDOM {
             Document document = reader.read("Libros.xml"); 
 
             Element root = document.getRootElement();
-            mostrarNodos(root);
+            mostrarNodos(root, "");
             
             //La biblioteca Dom4j no proporciona un método close() en la clase SAXReader para cerrar la lectura de un documento XML.
            //Por eso no he puesto finally.
