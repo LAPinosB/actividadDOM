@@ -4,12 +4,15 @@
  */
 package accesodom;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.*;
 
 /**
  *
  * @author luis
  */
+
 public class LeerAccesoDom {
 
     public void mostrarNodos(Node nodo) {
@@ -26,6 +29,7 @@ public class LeerAccesoDom {
                 System.out.println(nodoName);
             }
 
+            //https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap/getNamedItem
             NamedNodeMap atributos = elemento.getAttributes();
             for (int i = 0; i < atributos.getLength(); i++) {
                 Node atributo = atributos.item(i);
