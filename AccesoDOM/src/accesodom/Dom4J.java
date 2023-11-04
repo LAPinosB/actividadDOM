@@ -1,14 +1,15 @@
 package accesodom;
-
+/*
 import java.util.List;
 import org.dom4j.Attribute;
 import org.dom4j.Element;
 import org.dom4j.Node;
-
+*/
 /**
  *
  * @author luis
  */
+/*
 public class Dom4J {
 
     //Busque documentacion de como usar dom4j dejo el link en comentarios
@@ -36,3 +37,4 @@ public class Dom4J {
     }
 
 }
+*/

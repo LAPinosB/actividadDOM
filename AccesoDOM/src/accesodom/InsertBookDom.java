@@ -5,6 +5,10 @@
 package accesodom;
 
 import java.io.File;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -37,6 +41,19 @@ public class InsertBookDom {
             
             //Append Book to the root
             nodeBook.appendChild(doc.createTextNode("\n"));
+            
+            // Crear un objeto Transformer para guardar el documento DOM en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            // Crear un origen (source) DOM a partir del documento
+            DOMSource source = new DOMSource(doc);
+
+            // Crear un resultado (result) Stream para escribir en el archivo
+            StreamResult result = new StreamResult(f);
+            
+             // Realizar la transformación para guardar el documento en el archivo
+            transformer.transform(source, result);
             
             Node root = doc.getFirstChild();
             root.appendChild(nodeBook);
