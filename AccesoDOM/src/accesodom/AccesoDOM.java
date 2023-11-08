@@ -26,7 +26,7 @@ public class AccesoDOM {
         // TODO code application logic here
        
         AbrirXMLconDOM abrirXMLconDOM = new AbrirXMLconDOM();        
-        //LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
+        LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
         InsertBookDom insertBookDom = new InsertBookDom();
         AbrirDoc abrirDoc = new AbrirDoc();
         DeleteNode deleteNode = new DeleteNode();
@@ -42,6 +42,8 @@ public class AccesoDOM {
             //leerAccesoDom.mostrarNodos(abrirXMLconDOM.doc, "********");
             insertBookDom.insertarLibroEnDOM("Cien Años de Soledad", "Gabriel Garcia Marquez", "1980", file, doc);
             deleteNode.deleteNode("El Libro de la Jungla", doc);
+            leerAccesoDom.mostrarLibros(abrirXMLconDOM.doc);
+            //GuardarEnXML
         }else{
             System.out.println("El archivo DOM no se abrio correctamente");
         }

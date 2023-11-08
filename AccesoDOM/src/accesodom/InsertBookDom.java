@@ -18,11 +18,16 @@ import org.w3c.dom.Node;
  * @author luis
  */
 public class InsertBookDom {
-    public int insertarLibroEnDOM(String titulo, String autor, String fecha, File f, Document doc){
+    
+    //Pongo Document porque quiero que los cambios se muestren y modifiquen en el MAIN para visualizarlo si fuera
+    //Necesario para comprobar que se ha insertado correctamente
+    public Document insertarLibroEnDOM(String titulo, String autor, String fecha, File f, Document doc){
         
         try {
+            // las \n y \t los pongo por temas de estetica de visualizacion
             System.out.println("Añadir el libro al arbol DOM:\n \t \t"
                     +titulo+";\n \t \t"+autor+";\n \t \t"+fecha);
+            
             //Crear el titulo
             Node nodeTitle = doc.createElement("Titulo");
             Node nodeTitleContent = doc.createTextNode(titulo);
@@ -42,6 +47,7 @@ public class InsertBookDom {
             //Append Book to the root
             nodeBook.appendChild(doc.createTextNode("\n"));
             
+            //ESTO LO HICE ANTES DE VER EN CLASE LA CLASE DE GUARDAR EN EL ARCHIVO XML
             // Crear un objeto Transformer para guardar el documento DOM en un archivo
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -55,14 +61,18 @@ public class InsertBookDom {
              // Realizar la transformación para guardar el documento en el archivo
             transformer.transform(source, result);
             
+            //Nos situamos en el primer nodo hijo
             Node root = doc.getFirstChild();
+            //Añadimos Lo que vamos a añadir nuevo y se situara en el segundo nodo.( Esto lo hice por probar)
             root.appendChild(nodeBook);
+            //Sout de que se ha añadido correctamente.
             System.out.println("Libro Insertado en DOM");
-            return 0;
+            //Devolvemos el Document que esta manipulado con los cambios realizados, para poder visualizarlo desde el main.
+            return doc;
             
         } catch (Exception e) {
             System.out.println("Mensaje de Error: "+e.getMessage());
-            return -1;
+            return doc;
         }
     }
 }

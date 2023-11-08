@@ -4,6 +4,7 @@
  */
 package accesodom;
 
+import java.io.File;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -13,12 +14,15 @@ import org.w3c.dom.NodeList;
  * @author luis
  */
 public class DeleteNode {
+        AbrirXMLconDOM abrirXMLconDOM = new AbrirXMLconDOM();        
+        LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
+        File file = new File("Libros.xml");
     
     public int deleteNode(String title, Document document){
         System.out.println("Buscando el Libro: "+title+" para borrarlo ...");
         try{
             Node raiz = document.getDocumentElement();
-            NodeList nodeListOne = document.getElementsByTagName("Titutlo");
+            NodeList nodeListOne = document.getElementsByTagName("Titulo");
             Node n1;
             for(int i=0; i<nodeListOne.getLength();i++){
                 n1=nodeListOne.item(i);
@@ -30,6 +34,7 @@ public class DeleteNode {
                 }
             }
             System.out.println("Nodo Borrado");
+            leerAccesoDom.mostrarLibros(abrirXMLconDOM.doc);
             return 0;
         }catch(Exception e){
             System.out.println(e);
